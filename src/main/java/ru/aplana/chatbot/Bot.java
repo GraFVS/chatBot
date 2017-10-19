@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 
-class Bot{
+ class Bot{
     private Scanner scanner = new Scanner(System.in);
     private List<String> botAnswers = new ArrayList<>();
     private DictReader dictReader = new DictReader();
@@ -17,7 +17,7 @@ class Bot{
 
 
 //  конструктор без параметров
-Bot() {
+ Bot() {
         if (dictReader.checkFilePath(DEFAULT_PATH)) {
             botAnswers = dictReader.initDict(DEFAULT_PATH);
         }
@@ -27,7 +27,7 @@ Bot() {
 
     }
 //  конструктор с параметром String
-Bot(String userDictPath) {
+ Bot(String userDictPath) {
         if(dictReader.checkFilePath(userDictPath)){
             botAnswers = dictReader.initDict(userDictPath);
         }
@@ -40,7 +40,7 @@ Bot(String userDictPath) {
 
 
     //метод запуска бота
-    void botStart() {
+     void botStart() {
         boolean continueChatBot;
         String input;
         System.out.println("");
