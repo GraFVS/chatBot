@@ -5,11 +5,11 @@ public class Application {
         if (args.length > 0){
             String userDictPath = args[0];
             Bot bot = new Bot(userDictPath);
-            bot.botStart();
+            bot.start();
         }
         else {
             Bot bot = new Bot();
-            bot.botStart();
+            bot.start();
         }
     }
 }

@@ -40,7 +40,7 @@ import java.util.Scanner;
 
 
     //метод запуска бота
-     void botStart() {
+     void start() {
         boolean continueChatBot;
         String input;
         System.out.println("");
