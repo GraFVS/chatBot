@@ -35,7 +35,7 @@ class DictReader {
                     }
                 }
                 else {
-                    System.out.println("Это не похоже на текстовый файл с расширенеем .txt");
+                    System.out.println("Это не похоже на текстовый файл с расширением .txt");
                     return false;
                 }
 
