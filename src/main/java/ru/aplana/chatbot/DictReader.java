@@ -6,19 +6,46 @@ import java.util.List;
 
 class DictReader {
 
-    //Метод проверки пути к файлу
-    boolean checkFilePath(String filePath){
-        System.out.println("Ищу файл: "+filePath);
-        try{
-            File findFile = new File(filePath);
-            FileReader findFR = new FileReader(findFile);
-            System.out.println("Файл найден");
-            return true;
-        }
-        catch (FileNotFoundException e){
-            System.out.println("Не могу найти файл");
-            return false;
-        }
+    //Метод проверки файла нашим условиям (путь валидный -> указан .txt файл -> файл не пустой)
+    boolean checkFileTxtAndNotEmpty(String filePath){
+        System.out.println("Ищу текстовый файл: "+filePath);
+            try {
+                File findFile = new File(filePath);
+                FileReader findFR = new FileReader(findFile);
+                BufferedReader reader = new BufferedReader(findFR);
+                String line = reader.readLine();
+                List<String > checkFile = new ArrayList<>();
+                while (line != null) {
+                    if (line.length()>0) {
+                        checkFile.add(line);
+                    }
+                    line = reader.readLine();
+                }
+
+                //проверки и возвраты
+
+                if (filePath.endsWith(".txt")){
+                    if (checkFile.size()>0){
+                        System.out.println("Файл найден");
+                        return true;
+                        }
+                        else {
+                        System.out.println("Файл пустой, загружать словарь из него - плохая идея!");
+                        return false;
+                    }
+                }
+                else {
+                    System.out.println("Это не похоже на текстовый файл с расширенеем .txt");
+                    return false;
+                }
+
+
+            } catch (IOException e) {
+                System.out.println("Не могу найти файл");
+                return false;
+            }
+
+
     }
 
     //Метод инициализации словаря бота
@@ -32,7 +59,9 @@ class DictReader {
             BufferedReader reader = new BufferedReader(fr);
             String line = reader.readLine();
             while (line != null) {
-                newDict.add(line);
+                if (line.length()>0) {
+                    newDict.add(line);
+                }
                 line = reader.readLine();
             }
         } catch (IOException e) {

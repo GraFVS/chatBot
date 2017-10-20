@@ -18,7 +18,7 @@ import java.util.Scanner;
 
 //  конструктор без параметров
  Bot() {
-        if (dictReader.checkFilePath(DEFAULT_PATH)) {
+        if (dictReader.checkFileTxtAndNotEmpty(DEFAULT_PATH)) {
             botAnswers = dictReader.initDict(DEFAULT_PATH);
         }
         else {
@@ -28,7 +28,7 @@ import java.util.Scanner;
     }
 //  конструктор с параметром String
  Bot(String userDictPath) {
-        if(dictReader.checkFilePath(userDictPath)){
+        if(dictReader.checkFileTxtAndNotEmpty(userDictPath)){
             botAnswers = dictReader.initDict(userDictPath);
         }
         else {
@@ -141,7 +141,7 @@ import java.util.Scanner;
                     break;
 
                 default:
-                    if (dictReader.checkFilePath(pathInput)){
+                    if (dictReader.checkFileTxtAndNotEmpty(pathInput)){
                         botAnswers=dictReader.initDict(pathInput);
                         askPathAgain = false;
                     } else {
